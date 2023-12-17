@@ -6,12 +6,28 @@ use Livewire\Component;
 
 class Counter extends Component
 {
+
+    public int $counter = 0;
+
+    public function inc(): void
+    {
+        $this->counter += 1;
+    }
+
+    public function dec(): void
+    {
+        $this->counter -= 1;
+    }
+
     public function render()
     {
         return <<<'HTML'
-        <div>
-            {{-- The best athlete wants his opponent at his best. --}}
-        </div>
+            <div>
+                {{ $counter }}
+
+                <button type="button" wire:click="inc"> + </button>
+                <button type="button" wire:click="dec"> - </button>
+            </div>
         HTML;
     }
 }
