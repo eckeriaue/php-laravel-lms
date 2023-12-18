@@ -18,6 +18,11 @@ Route::get('/', function (Request $req) {
     return view('home');
 });
 
+
+Route::get('/testpage', function (Request $req) {
+    return view('testpage');
+});
+
 Route::get('/login', function (Request $req) {
     return view('login');
 });
