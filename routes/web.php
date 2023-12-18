@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function (Request $req) {
-    return view('home');
-});
-
-
-Route::get('/login', function (Request $req) {
-    return view('login');
+Route::get('/', function () {
+    return view('welcome');
 });
