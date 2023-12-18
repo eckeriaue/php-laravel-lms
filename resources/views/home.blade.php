@@ -6,6 +6,7 @@
     <title>my home page</title>
 </head>
 <body>
+    <h1> test counter app </h1>
     <livewire:counter />
 </body>
 </html>
