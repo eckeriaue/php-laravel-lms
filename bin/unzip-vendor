@@ -1,4 +1,14 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-rm -rf vendor
-unzip ./vendor.zip
+ZIP_FILE_PATH=./vendor.zip
+TARGET_FILE_PATH=./vendor
+
+if test -f "$ZIP_FILE_PATH"; then
+  rm -rf $TARGET_FILE_PATH
+  unzip $ZIP_FILE_PATH
+  rm -rf $ZIP_FILE_PATH
+  else
+  printf "\033[41m fail unzip vendor"
+fi
+# else
+# echo "fial unzip"

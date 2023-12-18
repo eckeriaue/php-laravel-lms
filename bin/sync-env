@@ -1,2 +1,7 @@
 #!/usr/bin/env bash
-scp ./.env e1berd_ftp@e1berd.beget.tech:
+
+echo "password: "
+read PASSWD
+
+sshpass -p $PASSWD scp ./.env e1berd_ftp@e1berd.beget.tech:
+echo "done"
