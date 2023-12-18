@@ -7,5 +7,6 @@
 </head>
 <body>
     login page
+    <a href="/"> go home </a>
 </body>
 </html>
