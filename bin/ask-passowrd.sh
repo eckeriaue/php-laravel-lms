@@ -1,0 +1,3 @@
+
+echo "password: "
+read PASSWD

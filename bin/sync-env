@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-echo "password: "
-read PASSWD
+source ./bin/ask-password.sh
 
 sshpass -p $PASSWD scp ./.env e1berd_ftp@e1berd.beget.tech:
-echo "done"
+printf "\033[42m done"

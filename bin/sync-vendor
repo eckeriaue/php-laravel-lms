@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 
+
+source ./bin/ask-password.sh
+
 VENDOR_FILE_PATH=./vendor.zip
 VENDOR_TARGET=./vendor/*
 
-echo "password: "
-read PASSWD
 
 zip -r $VENDOR_FILE_PATH $VENDOR_TARGET
 sshpass -p $PASSWD scp $VENDOR_FILE_PATH e1berd_ftp@e1berd.beget.tech:
