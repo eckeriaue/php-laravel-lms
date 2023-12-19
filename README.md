@@ -1,1 +1,1 @@
-## (LMS beta)[http://e1berd.beget.tech/]
+(LMS beta)[http://e1berd.beget.tech/]
