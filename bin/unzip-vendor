@@ -10,5 +10,3 @@ if test -f "$ZIP_FILE_PATH"; then
   else
   printf "\033[41m fail unzip vendor"
 fi
-# else
-# echo "fial unzip"
