@@ -16,7 +16,7 @@ return [
      |
      */
 
-    'domain' => "bprof.e1berd.beget.tech",
+    'domain' => "admin.e1berd.beget.tech",
 
     /*
      |--------------------------------------------------------------------------
