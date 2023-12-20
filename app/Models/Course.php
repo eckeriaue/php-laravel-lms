@@ -14,4 +14,9 @@ class Course extends Model
     {
         return $this->belongsTo(CourseCategory::class, "category_id", "id");
     }
+
+    public function getContent()
+    {
+        return [];
+    }
 }
