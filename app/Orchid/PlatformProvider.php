@@ -34,41 +34,41 @@ class PlatformProvider extends OrchidServiceProvider
     public function menu(): array
     {
         return [
-            Menu::make('Get Started')
+            Menu::make('Главная')
                 ->icon('bs.book')
-                ->title('Navigation')
+                ->title('Главное')
                 ->route(config('platform.index')),
 
 
-            Menu::make('courses')
+            Menu::make(__('Курсы'))
             ->icon('bs.book')
-            ->title('Learn')
+            ->title('Обучение')
             ->route('courses.list'),
 
 
-            Menu::make(__('Users'))
+            Menu::make(__('Пользователи'))
                 ->icon('bs.people')
                 ->route('platform.systems.users')
                 ->permission('platform.systems.users')
-                ->title(__('Access Controls')),
+                ->title(__('Доступы')),
 
-            Menu::make(__('Roles'))
+            Menu::make(__('Роли'))
                 ->icon('bs.shield')
                 ->route('platform.systems.roles')
                 ->permission('platform.systems.roles')
                 ->divider(),
 
-            Menu::make('Documentation')
-                ->title('Docs')
+            Menu::make('Документация Orchid')
+                ->title('Прочее')
                 ->icon('bs.box-arrow-up-right')
                 ->url('https://orchid.software/en/docs')
                 ->target('_blank'),
 
-            Menu::make('Changelog')
-                ->icon('bs.box-arrow-up-right')
-                ->url('https://github.com/orchidsoftware/platform/blob/master/CHANGELOG.md')
-                ->target('_blank')
-                ->badge(fn () => Dashboard::version(), Color::DARK),
+            // Menu::make('Changelog')
+            //     ->icon('bs.box-arrow-up-right')
+            //     ->url('https://github.com/orchidsoftware/platform/blob/master/CHANGELOG.md')
+            //     ->target('_blank')
+            //     ->badge(fn () => Dashboard::version(), Color::DARK),
         ];
     }
 

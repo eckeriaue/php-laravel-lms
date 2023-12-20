@@ -2,18 +2,34 @@
 
 namespace App\Orchid\Screens;
 
+use App\Models\Course;
+use App\Models\CourseCategory;
+use App\Orchid\Layouts\CourseEditLayout;
+use Orchid\Support\Facades\Layout;
+use Orchid\Support\Facades\Toast;
 use Orchid\Screen\Screen;
+use Illuminate\Http\Request;
+use Orchid\Screen\Actions\Button;
+use Orchid\Support\Color;
 
 class CourseEditScreen extends Screen
 {
+
+    /**
+     * @var Course
+     */
+    public $course;
+
     /**
      * Fetch data to be displayed on the screen.
      *
      * @return array
      */
-    public function query(): iterable
+    public function query(Course $course): iterable
     {
-        return [];
+        return [
+            'course' => $course,
+        ];
     }
 
     /**
@@ -23,7 +39,7 @@ class CourseEditScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'CourseEditScreen';
+        return "Course";
     }
 
     /**
@@ -33,7 +49,19 @@ class CourseEditScreen extends Screen
      */
     public function commandBar(): iterable
     {
-        return [];
+        return [
+
+            Button::make(__('Удалить'))
+            ->type(Color::BASIC)
+            ->icon('bs.trash3')
+            ->method('delete')
+            ->canSee($this->course->exists && $this->course->id),
+
+            Button::make(__('Сохранить'))
+            ->type(Color::BASIC)
+            ->icon('bs.check-circle')
+            ->method('save')
+        ];
     }
 
     /**
@@ -43,6 +71,30 @@ class CourseEditScreen extends Screen
      */
     public function layout(): iterable
     {
-        return [];
+        return [
+            Layout::block(CourseEditLayout::class)
+            ->title(__('Profile Information'))
+            ->description(__('Update your account\'s profile information and email address.'))
+        ];
+    }
+
+    public function save(Course $course, Request $request) {
+
+        $course->category_id = $request->get('course')['category_id'];
+        $course->name = $request->get('course')['name'];
+
+        if ($course->exists) {
+            $course->update();
+        }
+        else {
+            $course->save();
+        }
+
+        Toast::info(__($this->course->exists ? 'курс обновлен.' : 'курс создан.'));
+    }
+
+    public function delete(Course $course, Request $request) {
+        $course->delete();
+        Toast::info(__('курс удален.'));
     }
 }

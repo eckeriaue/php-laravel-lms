@@ -5,7 +5,6 @@ declare(strict_types=1);
 use App\Orchid\Screens\CourseEditScreen;
 use App\Orchid\Screens\CoursesScreen;
 use App\Orchid\Screens\PlatformScreen;
-use App\Orchid\Screens\CourseAddScreen;
 use App\Orchid\Screens\Role\RoleEditScreen;
 use App\Orchid\Screens\Role\RoleListScreen;
 use App\Orchid\Screens\User\UserEditScreen;
@@ -79,5 +78,5 @@ Route::screen('roles', RoleListScreen::class)
         ->push(__('Roles'), route('platform.systems.roles')));
 
 Route::screen("courses", CoursesScreen::class)->name('courses.list');
-Route::screen("courses/edit/{id}", CourseEditScreen::class)->name('course.edit');
-Route::screen("courses/add", CourseAddScreen::class)->name('course.add');
+Route::screen("courses/{course}/edit", CourseEditScreen::class)->name('course.edit');
+Route::screen("courses/create", CourseEditScreen::class)->name('course.create');

@@ -40,7 +40,7 @@ class CoursesListLayout extends Table
             TD::make('category_id', __('Category'))
                 ->cantHide()
                 ->filter(Input::make())
-                ->render(fn (Course $course) => $course->category->name),
+                ->render(fn (Course $course) => $course->category?->name ?? '—'),
 
             TD::make('created_at', __('Created'))
                 ->usingComponent(DateTimeSplit::class)
@@ -59,7 +59,7 @@ class CoursesListLayout extends Table
             ->render(fn (Course $course) => DropDown::make()
                 ->icon('bs.three-dots-vertical')
                 ->list([
-                    Link::make(__('Edit'))
+                    Link::make(__('Изменить'))
                         ->route('course.edit', $course->id)
                         ->icon('bs.pencil')
                 ])
