@@ -9,6 +9,7 @@ use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
 use App\Models\Course;
+use Orchid\Screen\Actions\Button;
 
 class CoursesListLayout extends Table
 {
@@ -61,7 +62,11 @@ class CoursesListLayout extends Table
                 ->list([
                     Link::make(__('Изменить'))
                         ->route('course.edit', $course->id)
-                        ->icon('bs.pencil')
+                        ->icon('bs.pencil'),
+                    Button::make(__('Удалить'))
+                        ->icon('bs.trash3')
+                        ->confirm(__('уверены что хотите удалить курс ?'))
+                        ->method('remove', ['id' => $course->id]),
                 ])
             ),
         ];

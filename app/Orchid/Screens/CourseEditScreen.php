@@ -3,7 +3,6 @@
 namespace App\Orchid\Screens;
 
 use App\Models\Course;
-use App\Models\CourseCategory;
 use App\Orchid\Layouts\CourseEditLayout;
 use Orchid\Support\Facades\Layout;
 use Orchid\Support\Facades\Toast;
@@ -54,7 +53,7 @@ class CourseEditScreen extends Screen
             Button::make(__('Удалить'))
             ->type(Color::BASIC)
             ->icon('bs.trash3')
-            ->method('delete')
+            ->method('remove')
             ->canSee($this->course->exists && $this->course->id),
 
             Button::make(__('Сохранить'))
@@ -93,8 +92,4 @@ class CourseEditScreen extends Screen
         Toast::info(__($this->course->exists ? 'курс обновлен.' : 'курс создан.'));
     }
 
-    public function delete(Course $course, Request $request) {
-        $course->delete();
-        Toast::info(__('курс удален.'));
-    }
 }

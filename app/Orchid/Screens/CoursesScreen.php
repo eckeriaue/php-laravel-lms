@@ -6,7 +6,8 @@ use App\Models\Course;
 use App\Orchid\Layouts\CoursesListLayout;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
-use Orchid\Screen\TD;
+use Orchid\Support\Facades\Toast;
+use Illuminate\Http\Request;
 
 class CoursesScreen extends Screen
 {
@@ -40,7 +41,7 @@ class CoursesScreen extends Screen
     public function commandBar(): iterable
     {
         return [
-            Link::make(__('Add'))
+            Link::make(__('Создать'))
                 ->icon('bs.plus-circle')
                 ->route('course.create')
         ];
@@ -56,5 +57,10 @@ class CoursesScreen extends Screen
         return [
             CoursesListLayout::class,
         ];
+    }
+
+    public function remove(Request $request) {
+        Course::findOrFail($request->get('id'))->delete();
+        Toast::info(__('курс удален.'));
     }
 }

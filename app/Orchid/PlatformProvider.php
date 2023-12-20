@@ -39,7 +39,6 @@ class PlatformProvider extends OrchidServiceProvider
                 ->title('Главное')
                 ->route(config('platform.index')),
 
-
             Menu::make(__('Курсы'))
             ->icon('bs.book')
             ->title('Обучение')
