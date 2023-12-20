@@ -2,7 +2,12 @@
 
 namespace App\Orchid\Screens;
 
+use App\Models\CourseCategory;
+use App\Orchid\Layouts\CourseCategoryListLayout;
+use Illuminate\Http\Request;
 use Orchid\Screen\Screen;
+use Orchid\Screen\Actions\Link;
+use Orchid\Support\Facades\Toast;
 
 class CourseCategoriesScreen extends Screen
 {
@@ -13,7 +18,9 @@ class CourseCategoriesScreen extends Screen
      */
     public function query(): iterable
     {
-        return [];
+        return [
+            'categories' => CourseCategory::all()->sortBy('id'),
+        ];
     }
 
     /**
@@ -23,7 +30,7 @@ class CourseCategoriesScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'CourseCategoriesScreen';
+        return 'Категории';
     }
 
     /**
@@ -33,7 +40,11 @@ class CourseCategoriesScreen extends Screen
      */
     public function commandBar(): iterable
     {
-        return [];
+        return [
+            Link::make(__('Создать'))
+                ->icon('bs.plus-circle')
+                ->route('category.create'),
+        ];
     }
 
     /**
@@ -43,6 +54,19 @@ class CourseCategoriesScreen extends Screen
      */
     public function layout(): iterable
     {
-        return [];
+        return [
+            CourseCategoryListLayout::class
+        ];
+    }
+    public function remove(Request $request) {
+        $category = CourseCategory::findOrFail($request->get('id'));
+
+        if (count($category->courses) > 0) {
+            Toast::error(__('Нельзя удалить категорию. Какие-то курсы еще привязаны к категории'));
+        }
+        else {
+            $category->delete();
+            Toast::info(__('курс удален.'));
+        }
     }
 }

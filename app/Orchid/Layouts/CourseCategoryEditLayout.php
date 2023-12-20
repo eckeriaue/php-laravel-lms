@@ -2,13 +2,11 @@
 
 namespace App\Orchid\Layouts;
 
-use App\Models\CourseCategory;
 use Orchid\Screen\Field;
 use Orchid\Screen\Fields\Input;
-use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Layouts\Rows;
 
-class CourseEditLayout extends Rows
+class CourseCategoryEditLayout extends Rows
 {
     /**
      * Used to create the title of a group of form elements.
@@ -25,18 +23,12 @@ class CourseEditLayout extends Rows
     protected function fields(): iterable
     {
         return [
-            Input::make('course.name')
+            Input::make('categories.name')
                 ->type('text')
                 ->max(255)
                 ->required()
-                ->title(__('Name'))
-                ->placeholder(__('Name')),
-
-            Select::make('course.category_id')
-                ->title(__('Категория'))
-                ->required()
-                ->placeholder(__('Name'))
-                ->fromModel(CourseCategory::class, 'name', 'id')
+                ->title(__('Название'))
+                ->placeholder(__('Название категории')),
         ];
     }
 }
