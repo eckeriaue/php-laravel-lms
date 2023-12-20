@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Orchid\Screens\CourseCategoriesScreen;
 use App\Orchid\Screens\CourseEditScreen;
 use App\Orchid\Screens\CoursesScreen;
 use App\Orchid\Screens\PlatformScreen;
@@ -77,3 +78,5 @@ Route::screen('roles', RoleListScreen::class)
 Route::screen("courses", CoursesScreen::class)->name('courses.list');
 Route::screen("courses/{course}/edit", CourseEditScreen::class)->name('course.edit');
 Route::screen("courses/create", CourseEditScreen::class)->name('course.create');
+
+Route::screen('categories', CourseCategoriesScreen::class)->name('categories.list');
