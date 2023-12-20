@@ -9,7 +9,7 @@ class CoursesController extends Controller
 {
     public function __invoke()
     {
-        $courses = Course::all();
+        $courses = Course::all(["id","name","description"]);
         return view("learn", ["courses" => $courses]);
     }
 }
