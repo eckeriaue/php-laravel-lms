@@ -16,7 +16,7 @@ return [
      |
      */
 
-    'domain' => env('DASHBOARD_DOMAIN', null),
+    'domain' => "e1berd.beget.tech",
 
     /*
      |--------------------------------------------------------------------------
