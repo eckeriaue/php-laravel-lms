@@ -10,8 +10,11 @@
 
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
+                Категории:
                 <ul>
-                    <li> item 1 </li>
+                    @foreach($categories as $category)
+                    <li> {{$category->name}} </li>
+                    @endforeach
                 </ul>
                 </div>
             </div>

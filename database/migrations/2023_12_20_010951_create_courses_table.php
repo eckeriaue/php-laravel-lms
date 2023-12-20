@@ -11,12 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if (Schema::hasTable("courses")) return;
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->string('name');
             $table->boolean('is_published')->default(true);
             $table->text('description')->nullable();
+            $table->softDeletes();
+
+            $table->unsignedBigInteger('category_id')->nullable();
+            $table->index('category_id', 'post_category_idx');
+            $table
+                ->foreign('category_id')
+                ->on('course_categories')
+                ->references('id');
         });
     }
 
