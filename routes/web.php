@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,9 +31,7 @@ Route::get('/dashboard', function () {
     ->name('dashboard');
 
 
-Route::get('/learn', function() {
-    return view('learn');
-})
+Route::get('/learn', CoursesController::class)
     ->middleware(['auth','verified'])
     ->name('learn');
 
