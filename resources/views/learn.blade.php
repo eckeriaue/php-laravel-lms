@@ -21,7 +21,10 @@
                 <!--  content -->
                 <ul class="">
                     @foreach($courses as $course)
-                        <li> {{$course}} </li>
+                        <li>
+                            <a href="{{ route('learn.page', ['id' => $course->id]) }}"> goto </a>
+                            {{$course}}
+                        </li>
                     @endforeach
                 </ul>
                 </div>

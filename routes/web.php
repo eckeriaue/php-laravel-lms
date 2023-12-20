@@ -34,7 +34,9 @@ Route::get('/dashboard', function () {
 Route::get('/learn', CoursesController::class)
     ->middleware(['auth','verified'])
     ->name('learn');
-
+Route::get('/learn/{id}', [CoursesController::class, 'find'])
+    ->middleware(['auth','verified'])
+    ->name('learn.page');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
