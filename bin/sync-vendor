@@ -2,7 +2,6 @@
 
 
 source ./bin/ask-password.sh
-
 VENDOR_FILE_PATH=./vendor.zip
 VENDOR_TARGET=./vendor/*
 
