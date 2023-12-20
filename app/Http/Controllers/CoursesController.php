@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\User;
 use App\Models\CourseCategory;
 use Illuminate\Http\Request;
+
 
 class CoursesController extends Controller
 {
