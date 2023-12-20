@@ -43,7 +43,7 @@ class CoursesScreen extends Screen
         return [
             Link::make(__('Создать'))
                 ->icon('bs.plus-circle')
-                ->route('course.create')
+                ->route('course.create'),
         ];
     }
 
