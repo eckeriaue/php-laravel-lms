@@ -42,19 +42,19 @@ class CourseLink extends Component
                     cursor-pointer
                     "
             >
-                <div>            
+                <header>            
                     <p class="flex gap-1 mb-1 text-sm">
                         {{$course->category->name}}
                     </p>
                     <h3 class="mb-1 text-xl font-medium">
                         {{$course->name}}
                     </h3>
-                    <p class="my-4 text-gray-500">
+                    <p class="my-4 text-gray-500 max-h-[79px] text-ellipsis overflow-hidden">
                         {{$course->description}}
                     </p>
-                </div>
+                </header>
 
-                <div
+                <footer
                     class="flex justify-between items-center leading-6"
                 >
                     <span
@@ -77,7 +77,7 @@ class CourseLink extends Component
                     >
                         начать
                     </button>
-                </div>
+                </footer>
             </article>
         HTML;
     }
