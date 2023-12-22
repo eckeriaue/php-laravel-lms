@@ -39,7 +39,7 @@
                             </button> -->
                         </div>
                     </div>
-                    <div class="catalog_cards grid grid-cols-[repeat(3,minmax(120px,420px))] grid-rows-[min(220px)] gap-5">
+                    <div class="catalog_cards grid grid-cols-[repeat(3,minmax(120px,420px))] auto-rows-[min(220px)] gap-5">
                         @foreach($courses as $course)
                             <x-course-link :course="$course"></x-course-link>
                         @endforeach
