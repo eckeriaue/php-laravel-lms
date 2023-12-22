@@ -78,9 +78,9 @@ class CourseEditScreen extends Screen
     }
 
     public function save(Course $course, Request $request) {
-
         $course->category_id = $request->get('course')['category_id'];
         $course->name = $request->get('course')['name'];
+        $course->description = $request->get('course')['description'];
 
         if ($course->exists) {
             $course->update();

@@ -6,6 +6,7 @@ use App\Models\CourseCategory;
 use Orchid\Screen\Field;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Select;
+use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Layouts\Rows;
 
 class CourseEditLayout extends Rows
@@ -29,13 +30,16 @@ class CourseEditLayout extends Rows
                 ->type('text')
                 ->max(255)
                 ->required()
-                ->title(__('Name'))
-                ->placeholder(__('Name')),
+                ->title(__('Название'))
+                ->placeholder(__('Введите название курса')),
+
+            TextArea::make('course.description')
+                ->type('text')
+                ->title(__('Описание')),
 
             Select::make('course.category_id')
                 ->title(__('Категория'))
                 ->required()
-                ->placeholder(__('Name'))
                 ->fromModel(CourseCategory::class, 'name', 'id')
         ];
     }
