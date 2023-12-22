@@ -38,7 +38,7 @@ class CourseLink extends Component
                     duration-150 ease-in-out
                     w-full h-full
                     rounded-2xl hover:rounded-3xl
-                    outline outline-gray-300 hover:outline-indigo-400
+                    outline outline-gray-300 dark:outline-gray-700 hover:outline-indigo-400
                     dark:hover:outline-indigo-600 outline-2
                     cursor-pointer
                     "
