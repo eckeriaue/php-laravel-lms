@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +31,10 @@ Route::get('/dashboard', function () {
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
+
+Route::get('/users', UsersController::class)
+    ->middleware(['auth', 'verified'])
+    ->name('users');
 
 Route::get('/learn', CoursesController::class)
     ->middleware(['auth','verified'])
