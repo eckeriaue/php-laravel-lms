@@ -34,7 +34,7 @@ class CourseLink extends Component
                 href="{{ route('learn.page', ['id' => $course?->id ?? 0]) }}"
                 class="
                     flex flex-col justify-between
-                    p-4 shadow-lg transition-all
+                    p-4 shadow transition-all
                     duration-150 ease-in-out
                     w-full h-full
                     rounded-2xl hover:rounded-3xl
