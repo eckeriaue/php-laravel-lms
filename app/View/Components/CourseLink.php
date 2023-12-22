@@ -28,14 +28,15 @@ class CourseLink extends Component
         //     dd($a);
         // };
         return <<<'HTML'
-            <article
-                x-data="{href: '{{ route('learn.page', ['id' => $course?->id ?? 0]) }}' }"
+            <article>
+            <a
                 role="link"
-                @click="open(href)"
+                href="{{ route('learn.page', ['id' => $course?->id ?? 0]) }}"
                 class="
                     flex flex-col justify-between
                     p-4 shadow-lg transition-all
                     duration-150 ease-in-out
+                    w-full h-full
                     rounded-2xl hover:rounded-3xl
                     outline outline-gray-300 hover:outline-indigo-400
                     dark:hover:outline-indigo-600 outline-2
@@ -78,6 +79,7 @@ class CourseLink extends Component
                         начать
                     </button>
                 </footer>
+            </a>
             </article>
         HTML;
     }
