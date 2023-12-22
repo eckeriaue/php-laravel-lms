@@ -14,7 +14,9 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased text-gray-800 dark:text-gray-200">
+    <body class="font-sans antialiased text-gray-800 dark:text-gray-200" x-init="() => {
+        if (localStorage.currentTheme === 'dark') document.documentElement.classList.add('dark')
+    }">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
             @include('layouts.navigation')
 

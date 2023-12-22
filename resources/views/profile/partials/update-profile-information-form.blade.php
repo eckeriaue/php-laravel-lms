@@ -7,7 +7,46 @@
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
             {{ __("Обновите информацию о профиле и адрес электронной почты своей учетной записи.") }}
         </p>
+
+
+        <div class="mt-2 mb-4">
+            <label
+                class="ms-2 text-sm text-gray-600 dark:text-gray-400"
+                x-data="{
+                    enableToggleTransition: false,
+                    toggleTheme(event) {
+                        this.enableToggleTransition = true
+                        localStorage.setItem('currentTheme', event.target.checked ? 'dark' : '')
+                        if (event.target.checked) {
+                            document.documentElement.classList.add('dark')
+                        }
+                        else {
+                            document.documentElement.classList.remove('dark')
+                        }
+
+                        const timer = setTimeout(() => {
+                            this.enableToggleTransition = false
+                            clearTimeout(timer)
+                        }, 200)
+                    }
+                }"
+            >
+            <template x-if="enableToggleTransition">
+                <style>
+                    * {transition: all; transition-duration: 150ms;}
+                </style>
+            </template>
+
+                <input
+                    @input="toggleTheme($event)"
+                    type="checkbox"
+                    :checked="localStorage.currentTheme === 'dark'"
+                    class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800">
+                темный режим
+            </label>
+        </div>
     </header>
+
 
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
         @csrf
