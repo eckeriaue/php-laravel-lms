@@ -14,16 +14,9 @@
                 class="ms-2 text-sm text-gray-600 dark:text-gray-400"
                 x-data="{
                     enableToggleTransition: false,
-                    toggleTheme(event) {
+                    toggleTheme() {
+                        $store.darkMode.toggle()
                         this.enableToggleTransition = true
-                        localStorage.setItem('currentTheme', event.target.checked ? 'dark' : '')
-                        if (event.target.checked) {
-                            document.documentElement.classList.add('dark')
-                        }
-                        else {
-                            document.documentElement.classList.remove('dark')
-                        }
-
                         const timer = setTimeout(() => {
                             this.enableToggleTransition = false
                             clearTimeout(timer)
@@ -38,9 +31,9 @@
             </template>
 
                 <input
-                    @input="toggleTheme($event)"
+                    @input="toggleTheme()"
                     type="checkbox"
-                    :checked="localStorage.currentTheme === 'dark'"
+                    :checked="localStorage.getItem('darkMode_on') === 'true'"
                     class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-sky-600 shadow-sm focus:ring-sky-500 dark:focus:ring-sky-600 dark:focus:ring-offset-gray-800">
                 темный режим
             </label>

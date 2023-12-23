@@ -18,11 +18,12 @@ class CoursesController extends Controller
         ]);
     }
 
-    public function find(int $id) {
-        $course = Course::find($id);
-        return view('learn-page', [
-            'id'=> $id,
-            "course" => $course
+    public function pages(int $id)
+    {
+        $course = Course::findOrFail($id);
+        return view("course-pages", [
+            'course' => $course,
+            'category' => $course->category,
         ]);
     }
 }

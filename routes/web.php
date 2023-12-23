@@ -39,7 +39,7 @@ Route::get('/users', UsersController::class)
 Route::get('/learn', CoursesController::class)
     ->middleware(['auth','verified'])
     ->name('learn');
-Route::get('/learn/{id}', [CoursesController::class, 'find'])
+Route::get('/learn/{id}', [CoursesController::class, 'pages'])
     ->middleware(['auth','verified'])
     ->name('learn.page');
 
